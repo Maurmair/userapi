@@ -24,6 +24,7 @@ public class UrlCheckController {
             HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
             conn.setRequestMethod("GET");
             conn.connect();
+            //tst
             int responseCodeCatergory = conn.getResponseCode() / 100;
             if (responseCodeCatergory != 2) {
                 returnMessage = SITE_IS_DOWN;
