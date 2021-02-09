@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  
+  my-custom-app:
+    image: maurmair/java-user-api
+    ports:
+      - 8080:8080
+    restart: on-failure
+    depends_on: 
+      - backend
+    environment: 
+      - DATABASE_HOST=backend
+      - DATABASE_USER=backend-user
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=MyAppDb
+      - DATABASE_PORT=3306
+  backend:
+    image: mysql:8.0
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=MyAppDb
+      - MYSQL_USER=backend-user
+      - MYSQL_PASSWORD=password
+    ports:
+      - 3306:3306
